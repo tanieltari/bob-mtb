@@ -1,3 +1,5 @@
+import com.diffplug.spotless.LineEnding
+
 plugins {
     id("com.android.library")
     id("com.diffplug.spotless") version "6.22.0"
@@ -6,6 +8,7 @@ plugins {
 spotless {
     java {
         target("src/*/java/**/*.java")
+        lineEndings = LineEnding.UNIX
         importOrder()
         removeUnusedImports()
         palantirJavaFormat()
