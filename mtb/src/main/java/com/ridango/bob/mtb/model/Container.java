@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Container {
     @JsonProperty("v")
     private byte[] version;
+
     @JsonProperty("p")
     private byte[] payload;
 

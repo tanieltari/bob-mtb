@@ -6,16 +6,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.ridango.bob.mtb.api.dto.DeviceKeyRequest;
 import com.ridango.bob.mtb.api.dto.DeviceKeyResponse;
-
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 import java.io.IOException;
-
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class DeviceClientTest {
     private static final MockWebServer MOCK_WEB_SERVER = new MockWebServer();

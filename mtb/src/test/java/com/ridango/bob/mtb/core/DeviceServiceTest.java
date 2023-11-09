@@ -4,12 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 
 import android.provider.Settings;
-
+import java.time.Instant;
 import org.junit.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
-
-import java.time.Instant;
 
 public class DeviceServiceTest {
     private final DeviceService sut = new DeviceService();

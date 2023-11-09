@@ -7,7 +7,6 @@ import com.google.common.hash.Hashing;
 import com.google.common.io.BaseEncoding;
 import com.ridango.bob.mtb.model.Container;
 import com.ridango.bob.mtb.model.DeviceBundleHeader;
-
 import java.io.IOException;
 
 public class MtbService {
@@ -21,7 +20,8 @@ public class MtbService {
         this.compressorService = compressorService;
     }
 
-    public String createDeviceSignedContainer(String issuerMtb, DeviceBundleHeader bundleHeader, String key, boolean compressed) throws IOException {
+    public String createDeviceSignedContainer(
+            String issuerMtb, DeviceBundleHeader bundleHeader, String key, boolean compressed) throws IOException {
         if (!BaseEncoding.base64Url().canDecode(issuerMtb)) {
             throw new IllegalArgumentException("Issuer MTB is not valid Base64URL string");
         }
@@ -31,7 +31,7 @@ public class MtbService {
         byte[] header = cborMapper.writeValueAsBytes(bundleHeader);
         byte[] payload = this.unwrapIssuerSignedContainerPayload(issuerMtb);
         byte[] signature = this.generateHs256Signature(header, payload, key);
-        byte[] bundle = cborMapper.writeValueAsBytes(new byte[][]{header, payload, signature});
+        byte[] bundle = cborMapper.writeValueAsBytes(new byte[][] {header, payload, signature});
         byte[] container = this.wrapDeviceSignedBundle(bundle);
         if (!compressed) {
             return BaseEncoding.base64Url().omitPadding().encode(container);
@@ -41,10 +41,10 @@ public class MtbService {
     }
 
     private boolean isDeviceBundleHeaderValid(DeviceBundleHeader header) {
-        return !Strings.isNullOrEmpty(header.getAlgorithm()) &&
-                !Strings.isNullOrEmpty(header.getDeviceId()) &&
-                !Strings.isNullOrEmpty(header.getKeyId()) &&
-                header.getAlgorithm().equals(DEFAULT_ALGORITHM);
+        return !Strings.isNullOrEmpty(header.getAlgorithm())
+                && !Strings.isNullOrEmpty(header.getDeviceId())
+                && !Strings.isNullOrEmpty(header.getKeyId())
+                && header.getAlgorithm().equals(DEFAULT_ALGORITHM);
     }
 
     private byte[] unwrapIssuerSignedContainerPayload(String encodedContainer) throws IOException {
@@ -55,8 +55,7 @@ public class MtbService {
 
     private byte[] generateHs256Signature(byte[] header, byte[] payload, String key) throws IOException {
         byte[][] signedData = {header, payload};
-        return Hashing
-                .hmacSha256(BaseEncoding.base64Url().decode(key))
+        return Hashing.hmacSha256(BaseEncoding.base64Url().decode(key))
                 .hashBytes(cborMapper.writeValueAsBytes(signedData))
                 .asBytes();
     }

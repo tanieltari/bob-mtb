@@ -5,9 +5,10 @@ plugins {
 
 spotless {
     java {
-        googleJavaFormat()
+        target("src/*/java/**/*.java")
         importOrder()
         removeUnusedImports()
+        palantirJavaFormat()
     }
 }
 

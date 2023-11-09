@@ -2,12 +2,10 @@ package com.ridango.bob.mtb.transport;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
-
 import com.google.common.io.BaseEncoding;
 import com.google.zxing.aztec.encoder.Encoder;
 import com.google.zxing.common.BitMatrix;
 import com.ridango.bob.mtb.core.CompressorService;
-
 import java.io.IOException;
 
 public class AztecBarcode {

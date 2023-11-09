@@ -7,18 +7,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DeviceBundleHeader {
     @JsonProperty("alg")
     private String algorithm;
+
     @JsonProperty("did")
     private String deviceId;
+
     @JsonProperty("kid")
     private String keyId;
+
     @JsonProperty("app")
     private String app;
+
     @JsonProperty("t")
     private String timestamp;
+
     @JsonProperty("prx")
     private String proximity;
+
     @JsonProperty("loc")
     private String location;
+
     @JsonProperty("ua")
     private Integer userAgentId;
 

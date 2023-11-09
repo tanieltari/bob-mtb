@@ -5,16 +5,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DeviceKeyResponse {
     @JsonProperty("kid")
     private String keyId;
+
     @JsonProperty("did")
     private String deviceId;
+
     @JsonProperty("kty")
     private String keyType;
+
     @JsonProperty("k")
     private String key;
+
     @JsonProperty("iat")
     private Integer issuedAt;
+
     @JsonProperty("exp")
     private Integer expiration;
+
     @JsonProperty("ua")
     private Integer userAgent;
 

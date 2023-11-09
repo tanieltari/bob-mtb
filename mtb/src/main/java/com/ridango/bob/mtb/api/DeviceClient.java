@@ -5,9 +5,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.google.common.base.Strings;
 import com.ridango.bob.mtb.api.dto.DeviceKeyRequest;
 import com.ridango.bob.mtb.api.dto.DeviceKeyResponse;
-
 import java.io.IOException;
-
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
