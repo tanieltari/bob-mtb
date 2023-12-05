@@ -3,6 +3,7 @@ import com.diffplug.spotless.LineEnding
 plugins {
     id("com.android.library")
     id("com.diffplug.spotless") version "6.22.0"
+    id("maven-publish")
 }
 
 spotless {
@@ -32,6 +33,22 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mtbLibrary") {
+            groupId = "com.ridango.bob.mtb"
+            artifactId = "mtb-helper"
+            version = "1.0"
+            afterEvaluate {
+                artifact(tasks.getByName("bundleReleaseAar"))
+            }
+        }
+    }
+    repositories {
+        mavenLocal()
     }
 }
 
